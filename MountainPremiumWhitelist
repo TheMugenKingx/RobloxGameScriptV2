@@ -1,0 +1,30 @@
+local whitelist = {
+    9059737015,
+}
+
+local player = game.Players.LocalPlayer
+local allowed = false
+
+for _, id in ipairs(whitelist) do
+    if player.UserId == id then
+        allowed = true
+        break
+    end
+end
+
+if allowed then
+    game.StarterGui:SetCore("SendNotification", {
+        Title = "Whitelist";
+        Text = "You Are Whitelisted!";
+        Duration = 4;
+    })
+
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/ArceusXArchivezx/GameQX/refs/heads/main/LoadMountain.luau"))()
+
+else
+    game.StarterGui:SetCore("SendNotification", {
+        Title = "Whitelist";
+        Text = "You are not on the list!";
+        Duration = 4;
+    })
+end
